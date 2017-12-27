@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= title %></h1>
+    <ul>
+        <% files.forEach(function (filename) { %>
+            <li><%= filename %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
