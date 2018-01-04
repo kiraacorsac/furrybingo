@@ -1,0 +1,35 @@
+<% include ./partials/head.ejs %>
+
+<h1>Bingo generation</h1>
+<h3>Show bingo</h3>
+<form action="/generateBingo/show" method="post">
+    <label for="text">User</label>
+    <br>
+    <input type="text" id="user" name="user">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
+<h3>Generate new bingo:</h3>
+<form action="/generateBingo/generateNew" method="post">
+    <label for="text">User</label>
+    <br>
+    <input type="text" id="user" name="user">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+
+<table>
+    <%for(var row = 0; row<5; row++){%>
+    <tr>
+        <%for(var col = 0; col<5; col++){%>
+        <td><%= bingoCardArray[row*5 + col].text%></td>
+        <% } %>
+    </tr>
+    <% } %>
+</table>
+
+
+<% include ./partials/butt.ejs %>

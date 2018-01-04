@@ -2,6 +2,7 @@
   <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="furrybingo:*" />
+      <env name="MLAB_FURRYBINGO_CS" value="mongodb://furrybingo:rr12dXxOM70r@ds131997.mlab.com:31997/heroku_dr0c89bx" />
     </envs>
     <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
       <browser url="http://localhost:3000/" />

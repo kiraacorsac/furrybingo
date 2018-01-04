@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-<h1><%= title %></h1>
-    <ul>
-        <% files.forEach(function (filename) { %>
-            <li><%= filename %></li>
-        <% }); %>
-    </ul>
+<% include ./partials/head.ejs %>
 
+<h1>We have <%= count %> things to generate Bingos form :3</h1>
+
+<h3>New submission:</h3>
     <form method="post">
-        <input type="text" name="newFileName">
+        <label for="text">Text (Description of the action.)*</label>
+        <br>
+        <input type="text" id="text" name="text">
+        <br>
+        <br>
+        <label for="subjects">Subjects (Comma-separated list, e.g. "kiraa, mlpard" would be subjects of "Kiraa licks Mlpard". Use exact names!)</label>
+        <br>
+        <input type="text" id="subjects" name="subjects">
+        <br>
+        <br>
+
         <input type="submit">
     </form>
 
-</body>
-</html>
+    <ul>
+        <% things.forEach(function (thing) { %>
+        <li><%= thing %></li>
+        <% }); %>
+    </ul>
+
+<% include ./partials/butt.ejs %>

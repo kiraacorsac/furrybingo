@@ -1,0 +1,19 @@
+<% include ./partials/head.ejs%>
+
+<h1>We have <%= count %> users.</h1>
+    <form method="post">
+        <label for="name">Name*</label>
+        <br>
+        <input type="text" id="name" name="name">
+        <br>
+        <br>
+
+        <input type="submit">
+    </form>
+
+    <ul>
+        <% users.forEach(function (user) { %>
+        <li><%= user %></li>
+        <% }); %>
+    </ul>
+<% include ./partials/butt.ejs%>

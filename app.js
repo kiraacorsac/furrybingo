@@ -1,3 +1,10 @@
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+var Thing = require('./models/Thing');
+var BingoThing = require('./models/BingoThing');
+var BingoCard = require('./models/BingoCard');
+var User = require('./models/User');
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,6 +14,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var thingEditor = require('./routes/thingEditor');
+var newUser = require('./routes/newUser');
+var generateBingo = require('./routes/generateBingo');
 
 var app = express();
 
@@ -22,8 +31,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+mongoose.connect(process.env.MLAB_FURRYBINGO_CS, {
+    useMongoClient: true
+});
+
+
 app.use('/', index);
 app.use('/thingEditor', thingEditor);
+app.use('/newUser', newUser);
+app.use('/generateBingo/show', generateBingo);
+app.use('/generateBingo/generateNew', generateBingo);
+app.use('/generateBingo', generateBingo);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -41,5 +61,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

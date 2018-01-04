@@ -1,26 +1,30 @@
 var express = require('express');
-var fs = require('fs');
+var mongoose = require('mongoose');
+var Thing = mongoose.model('Thing');
 var router = express.Router();
 
-var files = function(){return fs.readdirSync('./')};
-function createNewFile(filename) {
-    fs.writeFileSync(filename, 'lisk');
-}
+var find = function (res) {
+    Thing.find({}, function (err, things) {
+            res.render('thingEditor', { count: things.length, things: things });
+        }
+    );
+};
 
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('thingEditor', { title: "vagina", files: files() });
-    next();
+    find(res);
 });
 
-
-router.post('/', function(req, res, next) {
-    var name = req.body.newFileName;
-    createNewFile(name);
-    res.render('thingEditor', { title: name, files: files() });
-    next();
-
+router.post('/', function (req, res, next) {
+    var subjects = req.body.subjects.split(/[ ,]+/);
+    Thing.create({
+        text: req.body.text,
+        subjects: subjects.length === 0 ? [] : subjects,
+        active: true
+    }, function (err, things) {
+        find(res);
+    })
 });
 
 module.exports = router;
