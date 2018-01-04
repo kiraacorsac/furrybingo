@@ -25,8 +25,10 @@ router.post('/', function (req, res, next) {
         text: req.body.text,
         subjects: (subjects.length === 0 || subjects[0] === "") ? [] : subjects,
         active: true
-    }, function (err, things) {
-        find(res);
+    }).then(function (things) {
+        res.redirect('/thingEditor');
+    }).catch(function (reason) {
+        console.log(reason);
     })
 });
 
