@@ -1,35 +1,53 @@
 <% include ./partials/head.ejs %>
+<h3>Generate bingo</h3>
+<form action="/generateBingo" method="post">
+    <div class="well">
+        <h4>From:</h4>
+        <p>
+            <% allSubjects.forEach(sub => { %>
+            <label for="<%= sub %>" class="btn btn-default">
+                <input id="<%= sub %>" class="form-check-input" type="checkbox" name="subjects" value="<%= sub %>">
+                <%= sub %>
+            </label>
+            <% }) %>
+        </p>
+        <p>
+            <label for="everySub" class="btn btn-default">
+                <input id="everySub" type="radio" name="generateFrom" value="everyone" checked>
+                Everyone
+            </label>
+            <label for="everySubBut" class="btn btn-default">
+                <input id="everySubBut" type="radio" name="generateFrom" value="everyoneButSelected">
+                Everyone but selected
+            </label>
+            <label for="onlySub" class="btn btn-default">
+                <input id="onlySub" type="radio" name="generateFrom" value="onlySelected">
+                Only selected
+            </label>
+        </p>
 
-<h1>Bingo generation</h1>
-<h3>Show bingo</h3>
-<form action="/generateBingo/show" method="post">
-    <label for="text">User</label>
-    <br>
-    <input type="text" id="user" name="user">
-    <br>
-    <br>
-    <input type="submit">
+    </div>
+    <div class="well">
+        <h4>For:</h4>
+        <p>
+            <% allUsers.forEach(user => { %>
+            <label for="<%= user.id %>" class="btn btn-default">
+                <input id="<%= user.id %>" class="form-check-input" type="checkbox" name="users" value="<%= user.id %>">
+                <%= user.name %>
+            </label>
+            <% }) %>
+        </p>
+        <label for="everyUser" class="btn btn-default">
+            <input id="everyUser" type="radio" name="generateFor" value="everyone" checked>
+            Everyone
+        </label>
+        <label for="onlySelectedUser" class="btn btn-default">
+            <input id="onlySelectedUser" type="radio" name="generateFor" value="onlySelected">
+            Only selected
+        </label>
+    </div>
+
+    <button formaction="/generateBingo" class="btn btn-success" type="submit">Generate!</button>
+
 </form>
-
-<h3>Generate new bingo:</h3>
-<form action="/generateBingo/generateNew" method="post">
-    <label for="text">User</label>
-    <br>
-    <input type="text" id="user" name="user">
-    <br>
-    <br>
-    <input type="submit">
-</form>
-
-<table>
-    <%for(var row = 0; row<5; row++){%>
-    <tr>
-        <%for(var col = 0; col<5; col++){%>
-        <td><%= bingoCardArray[row*5 + col].text%></td>
-        <% } %>
-    </tr>
-    <% } %>
-</table>
-
-
 <% include ./partials/butt.ejs %>

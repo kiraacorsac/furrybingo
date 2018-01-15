@@ -3,28 +3,37 @@
 <h1>We have <%= count %> things to generate Bingos form :3</h1>
 
 <h3>New submission:</h3>
-    <form method="post">
-        <label for="text">Text (Description of the action.)*</label>
-        <br>
-        <input type="text" id="text" name="text">
-        <br>
-        <br>
-        <label for="subjects">Subjects (Comma-separated list, e.g. "kiraa, mlpard" would be subjects of "Kiraa licks Mlpard". Use exact names!)</label>
-        <br>
-        <input type="text" id="subjects" name="subjects">
-        <br>
-        <br>
+<form action="/thingEditor/addThing" method="post">
+    <label for="text">Text (Description of the action.)*</label>
+    <br>
+    <input type="text" id="text" name="text">
+    <br>
+    <br>
+    <label for="subjects">Subjects (Comma-separated list, e.g. "Kiraa, Mlpard" would be subjects of "Kiraa licks
+        Mlpard". Use exact names!)</label>
+    <br>
+    <input type="text" id="subjects" name="subjects">
+    <br>
+    <br>
 
-        <input type="submit">
-    </form>
+    <input type="submit">
+</form>
 
-<h3>Known subjects:</h3>
-
-
-    <ul>
+<ul>
+    <form action="/thingEditor/toggleThing" method="post">
         <% things.forEach(function (thing) { %>
-        <li><%= thing %></li>
+        <li>"<%= thing.text %>"
+            <button class="btn btn-xs <%= thing.active ? "btn-success" : "btn-danger" %>"
+                    type="submit" value="<%= thing.id %>"
+                    name="thingId">
+                <%= thing.active ? "Enabled" : "Disabled" %>
+            </button>
+            <br/>
+            <i>About: [<%= thing.subjects %>]</i>
+        </li>
+        <br/>
         <% }); %>
-    </ul>
+    </form>
+</ul>
 
 <% include ./partials/butt.ejs %>

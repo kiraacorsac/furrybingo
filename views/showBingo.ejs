@@ -1,0 +1,34 @@
+<% include ./partials/head.ejs %>
+<% if(renderCard){ %>
+    <form action="/showBingo/toggle" method="post">
+        <input type="hidden" name="user" value="<%= user %>">
+        <table>
+            <% for(var row = 0; row < 5; row++){ %>
+            <tr align="center">
+                <% for(var col = 0; col < 5; col++){ %>
+                <td>
+                    <button class="btn btn-bingo <%= bingoCardArray[row * 5 + col].complete ? "btn-success" : "btn-default" %>"
+                            type="submit" name="thingId"
+                            value="<%= bingoCardArray[row * 5 + col].id %>">
+                        <%= bingoCardArray[row * 5 + col].text %>
+                    </button>
+                </td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+    </form>
+<% } %>
+
+<form role="form" class="username" action="/showBingo/show" method="get">
+    <div class="input-group">
+        <input type="text" class="form-control" name="user" placeholder="Username">
+        <span class="input-group-btn" >
+            <button class="btn" type="submit">Show my bingo card!</button>
+        </span>
+    </div>
+</form>
+
+
+
+<% include ./partials/butt.ejs %>
