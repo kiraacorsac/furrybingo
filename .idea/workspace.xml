@@ -48,8 +48,8 @@
       <file leaf-file-name="head.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/head.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="84" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="84" />
+            <state relative-caret-position="273">
+              <caret line="13" column="61" lean-forward="true" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -407,7 +407,8 @@
     <MESSAGE value="fix empty thing" />
     <MESSAGE value="fix double post" />
     <MESSAGE value="do stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="do stuff" />
+    <MESSAGE value="bootstrap https" />
+    <option name="LAST_COMMIT_MESSAGE" value="bootstrap https" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -859,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/head.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="84" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="84" />
+        <state relative-caret-position="273">
+          <caret line="13" column="61" lean-forward="true" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
           <folding />
         </state>
       </provider>
