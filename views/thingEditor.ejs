@@ -3,21 +3,24 @@
 <h1>We have <%= count %> things to generate Bingos form :3</h1>
 
 <h3>New submission:</h3>
-<form action="/thingEditor/addThing" method="post">
-    <label for="text">Text (Description of the action.)*</label>
-    <br>
-    <input type="text" id="text" name="text">
-    <br>
-    <br>
-    <label for="subjects">Subjects (Comma-separated list, e.g. "Kiraa, Mlpard" would be subjects of "Kiraa licks
-        Mlpard". Use exact names!)</label>
-    <br>
-    <input type="text" id="subjects" name="subjects">
-    <br>
-    <br>
+<div class="well">
+    <form action="/thingEditor/addThing" method="post">
+        <label for="text">Text (Description of the action.)*</label>
+        <br>
+        <input type="text" id="text" name="text">
+        <br>
+        <br>
+        <label for="subjects">Subjects (Comma-separated list, e.g. "Kiraa, Mlpard" would be subjects of "Kiraa licks
+            Mlpard". Use exact names!)</label>
+        <br>
+        <input type="text" id="subjects" name="subjects">
+        <br>
+        <br>
 
-    <input type="submit">
-</form>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>
+
 
 <ul>
     <form action="/thingEditor/toggleThing" method="post">
