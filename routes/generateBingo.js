@@ -27,6 +27,9 @@ function createNewCard(bingoThings, user) {
 function makeNewBingoCard(user, things) {
     return Promise.all([user, things])
         .then(([user, things]) => {
+            if(things.length < 25){
+                throw new Error("Selected subjects do not provide enough things (need 25, have only" + things.length + ").");
+            }
             let bingoThings = things.map(
                 thing => ({thing: thing, complete: false})
             );

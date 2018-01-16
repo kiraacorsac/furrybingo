@@ -62,19 +62,6 @@ router.get('/show', (req, res, next) => {
         );
 });
 
-router.get('/show', (req, res, next) => {
-    getPopulatedUserDocument(req.query.user)
-        .then(
-            user => {
-                res.render('showBingo', {
-                    renderCard: true,
-                    bingoCardArray: getRenderableCardArray(user),
-                    user: user.name
-                })
-            }
-        );
-});
-
 router.get('/', (req, res, next) => {
     res.render('showBingo', {
         renderCard: false

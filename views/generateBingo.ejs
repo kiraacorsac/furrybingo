@@ -4,9 +4,9 @@
     <div class="well">
         <h4>From:</h4>
         <p>
-            <% allSubjects.forEach(sub => { %>
+            <% allSubjects.forEach((sub, index) => { %>
             <label for="<%= sub %>" class="btn btn-default">
-                <input id="<%= sub %>" class="form-check-input" type="checkbox" name="subjects" value="<%= sub %>">
+                <input id="<%= sub %>" class="form-check-input" type="checkbox" name="subjects[<%= index %>]" value="<%= sub %>">
                 <%= sub %>
             </label>
             <% }) %>
@@ -30,9 +30,9 @@
     <div class="well">
         <h4>For:</h4>
         <p>
-            <% allUsers.forEach(user => { %>
+            <% allUsers.forEach((user, index)=> { %>
             <label for="<%= user.id %>" class="btn btn-default">
-                <input id="<%= user.id %>" class="form-check-input" type="checkbox" name="users" value="<%= user.id %>">
+                <input id="<%= user.id %>" class="form-check-input" type="checkbox" name="users[<%=index%>]" value="<%= user.id %>">
                 <%= user.name %>
             </label>
             <% }) %>
