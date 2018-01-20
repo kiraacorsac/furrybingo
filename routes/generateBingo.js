@@ -40,7 +40,10 @@ function makeNewBingoCard(user, things) {
 router.post('/', (req, res, next) => {
     //nin for all but selected
     //all for selected
-    let userIds = req.body.users.map(user => mongoose.Types.ObjectId(user));
+    let userIds = [];
+    if (req.body.users !== undefined){
+        userIds = req.body.users.map(user => mongoose.Types.ObjectId(user));
+    }
     let userQueryChoices = {
         everyone: {},
         onlySelected: {_id: {$in: userIds}}
@@ -84,18 +87,10 @@ router.post('/', (req, res, next) => {
                 }
             )
         ))
-        .then(result =>{
+        .then(() =>{
             res.redirect("/generateBingo")
         })
         .catch(err => res.render('index', {title: err, msg: err}));
-    /*
-    then(user =>
-        res.render('showBingo', {
-            renderCard: true,
-            bingoCardArray: getRenderableCardArray(user),
-            user: user.name
-        })
-    ).catch(err => res.render('index', {title: err}));*/
 });
 
 router.get('/', (req, res, next) => {
